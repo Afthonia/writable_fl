@@ -47,8 +47,11 @@ class LoginScreen extends StatelessWidget {
                 ),
                 child: ListView(
                   children: [
-                    const FancyTitle(
-                      content: "WELCOME BACK",
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 50.0),
+                      child: FancyTitle(
+                        content: "WELCOME BACK",
+                      ),
                     ),
                     FancyTextField(
                       controller: controller.emailController,

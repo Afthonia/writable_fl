@@ -116,7 +116,7 @@ class Profile extends StatelessWidget {
           FilledButton(
             onPressed: () {},
             child: const Text(
-              "Create A New Adevnture!",
+              "Create A New Adventure!",
             ),
           ),
           GestureDetector(

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:writable_fl/screens/chapters_screen.dart';
 import 'package:writable_fl/utils/style_constants.dart';
 import 'package:writable_fl/utils/theme_constants.dart';
 import 'package:writable_fl/widgets/character_avatar.dart';
@@ -21,7 +23,7 @@ class StoryDesignScreen extends StatelessWidget {
           ),
           StoryDesignButton(
             content: "Chapters",
-            onTap: () {},
+            onTap: () => Get.to(const ChaptersScreen()),
           ),
           const Text("Characters"),
           SizedBox(

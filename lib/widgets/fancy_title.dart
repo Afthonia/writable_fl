@@ -8,21 +8,18 @@ class FancyTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 50.0),
-      child: Text(
-        content,
-        textAlign: TextAlign.center,
-        softWrap: true,
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: fontSize,
-          color: Colors.white,
-          shadows: const [
-            Shadow(
-                color: Colors.black, blurRadius: 10.0, offset: Offset(4.0, 5.0))
-          ],
-        ),
+    return Text(
+      content,
+      textAlign: TextAlign.center,
+      softWrap: true,
+      style: TextStyle(
+        fontWeight: FontWeight.w600,
+        fontSize: fontSize,
+        color: Colors.white,
+        shadows: const [
+          Shadow(
+              color: Colors.black, blurRadius: 10.0, offset: Offset(4.0, 5.0))
+        ],
       ),
     );
   }
