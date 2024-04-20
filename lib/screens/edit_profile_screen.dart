@@ -78,7 +78,7 @@ class EditProfileScreen extends StatelessWidget {
           const NormalTextfield(hintText: "When do you write?",),
           const NormalTextfield(hintText: "Which device/tool do you use to write?",),
           const NormalTextfield(hintText: "When do you write?",),
-          ActiveButton(content: "Save Changes", onTap: () => Get.to(Home()),)
+          ActiveButton(content: "Save Changes", onTap: () => Get.to(const Home()),)
         ],
       ),
     );

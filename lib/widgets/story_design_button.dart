@@ -14,7 +14,8 @@ class StoryDesignButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return icon != null
         ? Padding(
-            padding: EdgeInsets.symmetric(vertical: StyleConstants.smallPadding),
+            padding:
+                EdgeInsets.symmetric(vertical: StyleConstants.smallPadding),
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 backgroundColor: ThemeConstants.thirdColor.withOpacity(0.4),
@@ -30,7 +31,8 @@ class StoryDesignButton extends StatelessWidget {
             ),
           )
         : Padding(
-            padding: EdgeInsets.symmetric(vertical: StyleConstants.smallPadding),
+            padding:
+                EdgeInsets.symmetric(vertical: StyleConstants.smallPadding),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: ThemeConstants.thirdColor.withOpacity(0.4),

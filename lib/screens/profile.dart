@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:writable_fl/screens/favorite_quotes_screen.dart';
 import 'package:writable_fl/screens/user_books_screen.dart';
 import 'package:writable_fl/utils/style_constants.dart';
 import 'package:writable_fl/utils/theme_constants.dart';
@@ -104,7 +104,7 @@ class Profile extends StatelessWidget {
                         ],
                       ),
                       FilledButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(const FavoriteQuotes()),
                         child: const Text(
                           "Favorite Quotes",
                         ),
