@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "504596311770",
+    "project_id": "writable-fl",
+    "storage_bucket": "writable-fl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504596311770:android:a94b675410c8943db5ffe3",
+        "android_client_info": {
+          "package_name": "com.example.writable_fl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504596311770-ijvn55k52i1b0l43vv7859kjk1k0vkpr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.writable_fl",
+            "certificate_hash": "5a2b5c57fcf7d81140a4b894436fa1fbba07a9ca"
+          }
+        },
+        {
+          "client_id": "504596311770-d2n84550t5lrk58542p86qamg9uf5rng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeYTRxX2P13Atlxg9mbb43qjEbMpJtQrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504596311770-d2n84550t5lrk58542p86qamg9uf5rng.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504596311770-qh7piq5ms4mbo4coqmc187lnvfmrfgql.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.writableFl"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

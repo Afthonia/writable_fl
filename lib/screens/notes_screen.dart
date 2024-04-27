@@ -6,8 +6,8 @@ import 'package:writable_fl/widgets/back_icon.dart';
 import 'package:writable_fl/widgets/fancy_title.dart';
 import 'package:writable_fl/widgets/story_design_button.dart';
 
-class ChaptersScreen extends StatelessWidget {
-  const ChaptersScreen({super.key});
+class NotesScreen extends StatelessWidget {
+  const NotesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +15,15 @@ class ChaptersScreen extends StatelessWidget {
       appBar: AppBar(
         leading: const BackIcon(),
         title: const FancyTitle(
-          content: "Chapters of Emma",
+          content: "Notes of Emma",
           fontSize: 23.0,
-          
         ),
-        
       ),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) => StoryDesignButton(
           onTap: () {},
-          content: "Meeting",
+          content: "Note",
         ),
       ),
       floatingActionButton: IconButton.filled(

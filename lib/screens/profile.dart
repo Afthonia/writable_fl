@@ -1,13 +1,19 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:writable_fl/screens/favorite_quotes_screen.dart';
+import 'package:writable_fl/screens/book_overview_screen.dart';
+import 'package:writable_fl/screens/settings.dart';
+import 'package:writable_fl/screens/story_design_screen.dart';
 import 'package:writable_fl/screens/user_books_screen.dart';
 import 'package:writable_fl/utils/style_constants.dart';
 import 'package:writable_fl/utils/theme_constants.dart';
+import 'package:writable_fl/widgets/active_button.dart';
+import 'package:writable_fl/widgets/back_icon.dart';
 import 'package:writable_fl/widgets/book_card.dart';
+import 'package:writable_fl/widgets/fancy_title.dart';
+import 'package:writable_fl/widgets/profile_card.dart';
+import 'package:writable_fl/widgets/title_button.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -16,154 +22,95 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            CupertinoIcons.chevron_back,
-            color: ThemeConstants.activeIconColor,
-          ),
+        title: FancyTitle(
+          content: "Profile",
+          fontSize: StyleConstants.screenTitleSize,
         ),
+        leading: const BackIcon(),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              "icons/magicpen.svg",
+              colorFilter: ColorFilter.mode(
+                ThemeConstants.activeIconColor,
+                BlendMode.srcIn,
+              ),
+            ),
+          ),
+          IconButton(
+            onPressed: () => Get.to(const Settings()),
+            icon: Icon(
+              CupertinoIcons.settings_solid,
+              color: ThemeConstants.activeIconColor,
+            ),
+          ),
+        ],
       ),
       body: ListView(
         children: [
-          Card(
-            elevation: 0.0,
-            color: ThemeConstants.secondaryColor.withOpacity(0.5),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                StyleConstants.smallRadius,
-              ),
+          const ProfileCard(),
+          ActiveButton(
+            content: "Create A New Adventure!",
+            onTap: () => Get.to(
+              const StoryDesignScreen(),
             ),
-            child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: CircleAvatar(
-                              radius: 37.0,
-                              backgroundColor: ThemeConstants.activeColor,
-                              child: const CircleAvatar(
-                                radius: 35.0,
-                                backgroundImage:
-                                    AssetImage("assets/profile.png"),
-                              ),
-                            ),
-                          ),
-                          const Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text("Jane Austen"),
-                                Text("@jane_austen"),
-                                Row(
-                                  children: [
-                                    Text("Beginner"),
-                                    Text("Crazy Romantic"),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Divider(
-                        color: ThemeConstants.activeIconColor,
-                        thickness: 3.0,
-                      ),
-                      const Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text("654"),
-                                Text("Followers"),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text("463"),
-                                Text("Following"),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text("10"),
-                                Text("Stories"),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      FilledButton(
-                        onPressed: () => Get.to(const FavoriteQuotes()),
-                        child: const Text(
-                          "Favorite Quotes",
-                        ),
-                      ),
-                    ],
+          ),
+          TitleButton(
+            content: "My Books",
+            onTap: () => Get.to(
+              const UserBooksScreen(),
+            ),
+          ),
+          SizedBox(
+            height: 180,
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(
+                vertical: StyleConstants.smallPadding,
+              ),
+              itemCount: 4,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: StyleConstants.mediumPadding,
                   ),
-                )),
-          ),
-          FilledButton(
-            onPressed: () {},
-            child: const Text(
-              "Create A New Adventure!",
+                  child: BookCard(
+                    onLongPress: () => Get.to(const StoryDesignScreen()),
+                    onTap: () => Get.to(const BookOverviewScreen()),
+                  ),
+                );
+              },
             ),
           ),
-          GestureDetector(
-            onTap: () => Get.to(const UserBooksScreen()),
-            child: Text(
-              "My Books",
-              style: TextStyle(
-                color: ThemeConstants.activeTextColor,
+          TitleButton(
+            content: "My Reading List",
+            onTap: () => Get.to(
+              const UserBooksScreen(),
+            ),
+          ),
+          SizedBox(
+            height: 180,
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(
+                vertical: StyleConstants.smallPadding,
               ),
-            ),
-          ),
-          SizedBox(
-            height: 180,
-            child: ListView(
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              children: const [
-                BookCard(),
-                BookCard(),
-                BookCard(),
-                BookCard(),
-              ],
-            ),
-          ),
-          Text(
-            "My Reading List",
-            style: TextStyle(
-              color: ThemeConstants.activeTextColor,
-            ),
-          ),
-          SizedBox(
-            height: 180,
-            child: ListView(
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              children: const [
-                BookCard(),
-                BookCard(),
-                BookCard(),
-                BookCard(),
-                BookCard(),
-                BookCard(),
-                BookCard(),
-                BookCard(),
-              ],
+              itemCount: 7,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: StyleConstants.mediumPadding,
+                  ),
+                  child: BookCard(
+                    onTap: () => Get.to(const BookOverviewScreen()),
+                  ),
+                );
+              },
             ),
           ),
         ],
