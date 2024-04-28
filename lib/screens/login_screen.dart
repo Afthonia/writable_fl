@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:writable_fl/controllers/auth_controller.dart';
 import 'package:writable_fl/controllers/login_controller.dart';
-import 'package:writable_fl/screens/home.dart';
 import 'package:writable_fl/screens/register_screen.dart';
 import 'package:writable_fl/utils/style_constants.dart';
 import 'package:writable_fl/utils/theme_constants.dart';
@@ -63,7 +63,11 @@ class LoginScreen extends StatelessWidget {
                     ),
                     ActiveButton(
                       content: "Login",
-                      onTap: () => Get.to(const Home()),
+                      onTap: () async => await AuthController.to.signIn(
+                        "emailSignIn",
+                        email: controller.emailController.text,
+                        password: controller.passwordController.text,
+                      ),
                       hPad: 80.0,
                     ),
                     Row(
