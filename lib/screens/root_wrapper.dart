@@ -10,7 +10,7 @@ class RootWrapper extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => controller.user.value != null
+      () => controller.currentUser.value != null
           ? const Home()
           : const LoginScreen(),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:writable_fl/controllers/auth_controller.dart';
 import 'package:writable_fl/screens/book_overview_screen.dart';
 import 'package:writable_fl/screens/settings.dart';
 import 'package:writable_fl/screens/story_design_screen.dart';
@@ -28,6 +29,12 @@ class Profile extends StatelessWidget {
         ),
         leading: const BackIcon(),
         actions: [
+          IconButton(
+              onPressed: () async => await AuthController.to.signOut(),
+              icon: Icon(
+                Icons.logout_rounded,
+                color: ThemeConstants.activeIconColor,
+              )),
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(

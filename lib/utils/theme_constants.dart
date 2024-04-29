@@ -10,4 +10,6 @@ class ThemeConstants {
   static Color almostFadingTextColor = const Color(0xFFFFFFFF).withOpacity(0.7);
   static Color activeTextColor = const Color(0xFFFFFFFF);
   static Color activeIconColor = const Color(0xFFFFFFFF);
+
+  static Color red = const Color(0xFF741F1F);
 }

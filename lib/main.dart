@@ -3,7 +3,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:writable_fl/controllers/auth_controller.dart';
-import 'package:writable_fl/screens/login_screen.dart';
 import 'package:writable_fl/screens/root_wrapper.dart';
 import 'package:writable_fl/utils/theme_constants.dart';
 import 'package:firebase_core/firebase_core.dart';

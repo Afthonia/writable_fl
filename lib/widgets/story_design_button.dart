@@ -9,13 +9,15 @@ class StoryDesignButton extends StatelessWidget {
       required this.content,
       this.icon,
       this.contentSize = 14.0,
-      this.contentWeight = FontWeight.normal});
+      this.contentWeight = FontWeight.normal,
+      this.backgroundColor});
 
   final VoidCallback onTap;
   final String content;
   final Widget? icon;
   final double contentSize;
   final FontWeight contentWeight;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,8 @@ class StoryDesignButton extends StatelessWidget {
             ),
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                backgroundColor: ThemeConstants.thirdColor.withOpacity(0.4),
+                backgroundColor: backgroundColor ??
+                    ThemeConstants.thirdColor.withOpacity(0.4),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
                     StyleConstants.smallRadius,
@@ -65,7 +68,8 @@ class StoryDesignButton extends StatelessWidget {
             ),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: ThemeConstants.thirdColor.withOpacity(0.4),
+                backgroundColor: backgroundColor ??
+                    ThemeConstants.thirdColor.withOpacity(0.4),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
                     StyleConstants.smallRadius,

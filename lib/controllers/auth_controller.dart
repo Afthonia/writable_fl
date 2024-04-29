@@ -5,6 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:writable_fl/controllers/register_controller.dart';
 import 'package:writable_fl/models/user_model.dart';
+import 'package:writable_fl/screens/root_wrapper.dart';
 import 'package:writable_fl/services/user_api.dart';
 //import 'package:writable_fl/widgets/verify_modal.dart';
 
@@ -16,6 +17,7 @@ class AuthController extends GetxController {
 
   final user = Rxn<User>();
   final currentUser = Rxn<UserModel>();
+  bool isLoading = false;
 
   @override
   void onInit() {
@@ -153,9 +155,14 @@ class AuthController extends GetxController {
     EasyLoading.show(maskType: EasyLoadingMaskType.clear);
     try {
       await auth.signOut();
+      Get.offAll(const RootWrapper());
+    } on FirebaseAuthException catch (err) {
+      debugPrint("Firebase Sign Out Error: ${err.code}");
+      debugPrint("Firebase Sign Out Error: $err");
     } catch (err) {
       debugPrint("Sign Out Error: $err");
     }
+    EasyLoading.dismiss();
   }
 
   Future<bool> deleteUser() async {
@@ -164,7 +171,6 @@ class AuthController extends GetxController {
 
       if (deleted) {
         await user.value!.delete();
-        await auth.currentUser?.delete();
 
         //Get.offAll(const RootWrapper());
       }

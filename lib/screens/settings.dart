@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:writable_fl/controllers/auth_controller.dart';
 import 'package:writable_fl/screens/help_screen.dart';
 import 'package:writable_fl/utils/style_constants.dart';
 import 'package:writable_fl/utils/theme_constants.dart';
@@ -34,6 +35,17 @@ class Settings extends StatelessWidget {
               CupertinoIcons.question_circle,
               color: ThemeConstants.activeIconColor,
             ),
+          ),
+          StoryDesignButton(
+            onTap: () async => await AuthController.to.deleteUser(),
+            content: "Delete Account",
+            contentSize: StyleConstants.largeText,
+            contentWeight: FontWeight.bold,
+            icon: Icon(
+              CupertinoIcons.delete,
+              color: ThemeConstants.activeIconColor,
+            ),
+            backgroundColor: ThemeConstants.red,
           ),
         ],
       ),
