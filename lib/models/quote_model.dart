@@ -6,7 +6,7 @@ class QuoteModel {
   int userID;
   String content;
   DateTime createdAt;
-  
+
   QuoteModel({
     required this.id,
     required this.userID,
@@ -26,7 +26,7 @@ class QuoteModel {
   factory QuoteModel.fromMap(Map<String, dynamic> map) {
     return QuoteModel(
       id: map['id'] as int,
-      userID: map['userID'] as int,
+      userID: map['user_id'] as int,
       content: map['content'] as String,
       createdAt: DateTime.fromMillisecondsSinceEpoch(map['created_at'] as int),
     );
