@@ -5,6 +5,8 @@ import 'package:writable_fl/models/book_model.dart';
 import 'package:writable_fl/services/book_api.dart';
 
 class BookController extends GetxController {
+  static BookController get to => Get.find();
+  
   final recentBooks = Rxn<List<BookModel>>();
   final allBooks = Rxn<List<BookModel>>();
 
@@ -30,5 +32,11 @@ class BookController extends GetxController {
     allBooksHandle?.cancel();
 
     super.onClose();
+  }
+
+  Future<List<BookModel>?> getUserBooks(String id) async {
+    final books = await BookApi.getUserBooks(id);
+
+    return books;
   }
 }

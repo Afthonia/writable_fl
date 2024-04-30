@@ -29,6 +29,8 @@ class BookApi {
       final books = booksSnap.map((snap) =>
           snap.docs.map((doc) => BookModel.fromMap(doc.data())).toList());
 
+          
+
       return books;
     } on FirebaseException catch (err) {
       debugPrint("Firebase Get All Books Error: $err");
@@ -49,10 +51,14 @@ class BookApi {
 
       final booksDoc = booksSnap.docs;
 
-      final books =
-          booksDoc.map((doc) => BookModel.fromMap(doc.data())).toList();
+      if (booksDoc.isNotEmpty) {
+        final books =
+            booksDoc.map((doc) => BookModel.fromMap(doc.data())).toList();
 
-      return books;
+        return books;
+      }
+
+      
     } on FirebaseException catch (err) {
       debugPrint("Firebase Get User Books Error: $err");
       debugPrint("Firebase Get User Books Error: ${err.code}");
