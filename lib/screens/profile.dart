@@ -36,34 +36,35 @@ class Profile extends GetView<BookController> {
           fontSize: StyleConstants.screenTitleSize,
         ),
         leading: const BackIcon(),
-        actions: [
-          ProfileController.to.uid == AuthController.to.currentUser.value!.id
-              ? IconButton(
-                  onPressed: () async => await AuthController.to.signOut(),
-                  icon: Icon(
-                    Icons.logout_rounded,
-                    color: ThemeConstants.activeIconColor,
-                  ),
-                )
-              : const SizedBox(),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              "icons/magicpen.svg",
-              colorFilter: ColorFilter.mode(
-                ThemeConstants.activeIconColor,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-          IconButton(
-            onPressed: () => Get.to(const Settings()),
-            icon: Icon(
-              CupertinoIcons.settings_solid,
-              color: ThemeConstants.activeIconColor,
-            ),
-          ),
-        ],
+        actions:
+            ProfileController.to.uid == AuthController.to.currentUser.value!.id
+                ? [
+                    IconButton(
+                      onPressed: () async => await AuthController.to.signOut(),
+                      icon: Icon(
+                        Icons.logout_rounded,
+                        color: ThemeConstants.activeIconColor,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        "icons/magicpen.svg",
+                        colorFilter: ColorFilter.mode(
+                          ThemeConstants.activeIconColor,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => Get.to(const Settings()),
+                      icon: Icon(
+                        CupertinoIcons.settings_solid,
+                        color: ThemeConstants.activeIconColor,
+                      ),
+                    ),
+                  ]
+                : null,
       ),
       body: ListView(
         children: [
