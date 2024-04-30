@@ -37,12 +37,15 @@ class Profile extends GetView<BookController> {
         ),
         leading: const BackIcon(),
         actions: [
-          IconButton(
-              onPressed: () async => await AuthController.to.signOut(),
-              icon: Icon(
-                Icons.logout_rounded,
-                color: ThemeConstants.activeIconColor,
-              )),
+          ProfileController.to.uid == AuthController.to.currentUser.value!.id
+              ? IconButton(
+                  onPressed: () async => await AuthController.to.signOut(),
+                  icon: Icon(
+                    Icons.logout_rounded,
+                    color: ThemeConstants.activeIconColor,
+                  ),
+                )
+              : const SizedBox(),
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
@@ -65,12 +68,14 @@ class Profile extends GetView<BookController> {
       body: ListView(
         children: [
           const ProfileCard(),
-          ActiveButton(
-            content: "Create A New Adventure!",
-            onTap: () => Get.to(
-              const StoryDesignScreen(),
-            ),
-          ),
+          profController.uid == AuthController.to.currentUser.value?.id
+              ? ActiveButton(
+                  content: "Create A New Adventure!",
+                  onTap: () => Get.to(
+                    const StoryDesignScreen(),
+                  ),
+                )
+              : const SizedBox(),
           TitleButton(
             content: "My Books",
             onTap: () => Get.to(
@@ -124,7 +129,8 @@ class Profile extends GetView<BookController> {
                   vertical: StyleConstants.smallPadding,
                 ),
                 itemCount: profController.books.value != null
-                        ? profController.books.value!.length : 1,
+                    ? profController.books.value!.length
+                    : 1,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.symmetric(

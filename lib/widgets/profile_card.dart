@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:writable_fl/controllers/auth_controller.dart';
+import 'package:writable_fl/controllers/profile_controller.dart';
 import 'package:writable_fl/screens/favorite_quotes_screen.dart';
 import 'package:writable_fl/utils/style_constants.dart';
 import 'package:writable_fl/utils/theme_constants.dart';
@@ -74,6 +76,16 @@ class ProfileCard extends StatelessWidget {
                               const AuthorTitleBadge(title: "Crazy Romantic"),
                             ],
                           ),
+                          ProfileController.to.uid !=
+                                  AuthController.to.currentUser.value!.id
+                              ? Text(
+                                  "Joined us at",
+                                  style: TextStyle(
+                                    fontSize: StyleConstants.smallText,
+                                    color: ThemeConstants.fadingTextColor,
+                                  ),
+                                )
+                              : const SizedBox()
                         ],
                       ),
                     ),
@@ -121,6 +133,37 @@ class ProfileCard extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  ProfileController.to.uid !=
+                          AuthController.to.currentUser.value!.id
+                      ? Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: StyleConstants.mediumPadding,
+                              vertical: StyleConstants.bigPadding,
+                            ),
+                            child: FilledButton(
+                              onPressed: () => Get.to(
+                                const FavoriteQuotes(),
+                              ),
+                              style: FilledButton.styleFrom(
+                                backgroundColor: ThemeConstants.primaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    StyleConstants.smallRadius,
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                "Writing Habits",
+                                style: TextStyle(
+                                  color: ThemeConstants.fadingTextColor,
+                                  fontSize: StyleConstants.mediumText,
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
