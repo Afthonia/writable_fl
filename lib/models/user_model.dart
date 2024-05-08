@@ -15,6 +15,7 @@ class UserModel {
   String authorTitle;
   DateTime lastVisited;
   DateTime createdAt;
+  List<dynamic> readingList;
 
   UserModel({
     required this.id,
@@ -30,6 +31,7 @@ class UserModel {
     required this.authorTitle,
     required this.lastVisited,
     required this.createdAt,
+    required this.readingList,
   });
 
   Map<String, dynamic> toMap() {
@@ -45,6 +47,7 @@ class UserModel {
       'author_title': authorTitle,
       'last_visited': lastVisited.millisecondsSinceEpoch,
       'created_at': createdAt.millisecondsSinceEpoch,
+      'reading_list': readingList,
     };
   }
 
@@ -67,6 +70,7 @@ class UserModel {
       birthday: map['favorite_book'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['birthday'] as int)
           : null,
+      readingList: map['reading_list'] != null ? map['reading_list'] as List<dynamic> : [],
     );
   }
 

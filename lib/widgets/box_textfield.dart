@@ -18,6 +18,8 @@ class BoxTextfield extends StatelessWidget {
           color: ThemeConstants.activeTextColor,
         ),
         decoration: InputDecoration(
+          filled: true,
+          fillColor: ThemeConstants.primaryColor,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
               StyleConstants.smallRadius,

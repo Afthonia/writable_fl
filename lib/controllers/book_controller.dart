@@ -6,7 +6,7 @@ import 'package:writable_fl/services/book_api.dart';
 
 class BookController extends GetxController {
   static BookController get to => Get.find();
-  
+
   final recentBooks = Rxn<List<BookModel>>();
   final allBooks = Rxn<List<BookModel>>();
 
@@ -39,4 +39,15 @@ class BookController extends GetxController {
 
     return books;
   }
+
+  void createBook() async {
+    
+  }
+
+  // Future<List<BookModel>?> getReadingList(List<dynamic>? bookIDs) async {
+  //   bookIDs = bookIDs?.where((element) => element as int).toList();
+  //   final books = await BookApi.getReadingList(bookIDs);
+
+  //   return books;
+  // }
 }

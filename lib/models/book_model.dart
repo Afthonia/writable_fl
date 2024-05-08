@@ -8,6 +8,7 @@ class BookModel {
   String? coverURL;
   String title;
   String? subtitle;
+  String? description;
   DateTime createdAt;
   DateTime? publishedAt;
 
@@ -18,6 +19,7 @@ class BookModel {
     this.coverURL,
     required this.title,
     this.subtitle,
+    this.description,
     required this.createdAt,
     this.publishedAt,
   });
@@ -30,6 +32,7 @@ class BookModel {
       'cover_url': coverURL,
       'title': title,
       'subtitle': subtitle,
+      'description': description,
       'created_at': createdAt.millisecondsSinceEpoch,
       'published_at': publishedAt?.millisecondsSinceEpoch,
     };
@@ -43,6 +46,7 @@ class BookModel {
       coverURL: map['cover_url'] != null ? map['cover_url'] as String : null,
       title: map['title'] as String,
       subtitle: map['subtitle'] != null ? map['subtitle'] as String : null,
+      description: map['description'] != null ? map['description'] as String : null,
       createdAt: DateTime.fromMillisecondsSinceEpoch(map['created_at'] as int),
       publishedAt: map['published_at'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['published_at'] as int)

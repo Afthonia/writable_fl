@@ -112,6 +112,7 @@ class AuthController extends GetxController {
         inspiration: RegisterController.to.inspController.text,
         email: email,
         profileImage: user.value?.photoURL,
+        readingList: [],
       );
 
       if (credential.user != null) {

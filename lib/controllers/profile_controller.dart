@@ -5,6 +5,7 @@ import 'package:writable_fl/models/book_model.dart';
 class ProfileController extends GetxController {
   static ProfileController get to => Get.find();
   final books = Rxn<List<BookModel>>();
+  final readingList = Rxn<List<BookModel>>();
   String uid;
 
   ProfileController({required this.uid});
@@ -14,5 +15,6 @@ class ProfileController extends GetxController {
     super.onInit();
 
     books.value = await BookController.to.getUserBooks(uid); 
+    //readingList.value = await BookController.to.getReadingList((await UserApi.getUser(uid))!.readingList ); 
   }
 }
