@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:writable_fl/controllers/auth_controller.dart';
 import 'package:writable_fl/controllers/book_controller.dart';
 import 'package:writable_fl/controllers/profile_controller.dart';
+import 'package:writable_fl/models/user_dashboard_model.dart';
 import 'package:writable_fl/screens/book_overview_screen.dart';
 import 'package:writable_fl/screens/settings.dart';
 import 'package:writable_fl/screens/story_design_screen.dart';
@@ -69,7 +70,18 @@ class Profile extends GetView<BookController> {
       ),
       body: ListView(
         children: [
-          const ProfileCard(),
+          ProfileCard(
+            dashboardModel: UserDashboardModel(
+                name: AuthController.to.currentUser.value!.name,
+                username: AuthController.to.currentUser.value!.username,
+                email: AuthController.to.currentUser.value!.email,
+                gender: AuthController.to.currentUser.value!.gender,
+                inspiration: AuthController.to.currentUser.value!.inspiration,
+                authorLevel: AuthController.to.currentUser.value!.authorLevel,
+                authorTitle: AuthController.to.currentUser.value!.authorTitle,
+                lastVisited: AuthController.to.currentUser.value!.lastVisited,
+                createdAt: AuthController.to.currentUser.value!.createdAt),
+          ),
           profController.uid == AuthController.to.currentUser.value?.id
               ? ActiveButton(
                   content: "Create A New Adventure!",

@@ -2,15 +2,19 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:writable_fl/controllers/auth_controller.dart';
 import 'package:writable_fl/controllers/profile_controller.dart';
+import 'package:writable_fl/models/user_dashboard_model.dart';
 import 'package:writable_fl/screens/favorite_quotes_screen.dart';
 import 'package:writable_fl/utils/style_constants.dart';
 import 'package:writable_fl/utils/theme_constants.dart';
 import 'package:writable_fl/widgets/author_title_badge.dart';
 
 class ProfileCard extends StatelessWidget {
-  const ProfileCard({super.key});
+  const ProfileCard({super.key, required this.dashboardModel});
+
+  final UserDashboardModel dashboardModel;
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +56,13 @@ class ProfileCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Jane Austen",
+                            "${dashboardModel.name} ${dashboardModel.surname ?? ''}",
                             style: TextStyle(
                               fontSize: StyleConstants.sectionTitleSize,
                             ),
                           ),
                           Text(
-                            "@jane_austen",
+                            "@${dashboardModel.username}",
                             style: TextStyle(
                               fontSize: StyleConstants.mediumText,
                               color: ThemeConstants.fadingTextColor,
@@ -68,18 +72,19 @@ class ProfileCard extends StatelessWidget {
                             alignment: WrapAlignment.end,
                             children: [
                               Text(
-                                "Beginner",
+                                dashboardModel.authorLevel,
                                 style: TextStyle(
                                   color: ThemeConstants.almostFadingTextColor,
                                 ),
                               ),
-                              const AuthorTitleBadge(title: "Crazy Romantic"),
+                              AuthorTitleBadge(
+                                  title: dashboardModel.authorTitle),
                             ],
                           ),
-                          ProfileController.to.uid !=
+                          ProfileController.to.uid ==
                                   AuthController.to.currentUser.value!.id
                               ? Text(
-                                  "Joined us at",
+                                  "Joined us at ${DateFormat('y MMM').format(dashboardModel.createdAt)}",
                                   style: TextStyle(
                                     fontSize: StyleConstants.smallText,
                                     color: ThemeConstants.fadingTextColor,
